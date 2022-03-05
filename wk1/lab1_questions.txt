@@ -1,0 +1,8 @@
+# Name: Andrew Shiraki
+# Date: 2021-03-02
+# Title: Lab1 - Questions
+# Description: Answers to Lab1 Questions
+
+1) I am using Endeavour OS
+2) I have written some shell scripts in the past so I didn't have too many issues. I think the trickiest part for me was deciding how to manage the decimals. I decided to work with integers and picked a random accuracy of 5 decimal places and just added the decimal at the end. I'm not sure if this is the best approach
+
