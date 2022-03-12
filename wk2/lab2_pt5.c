@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     if (pid){ 
         // Parent process 
 	wait(NULL);
-	printf("%s", "Child Complete"); 
+	printf("%s\n", "Child Complete"); 
     } 
     else{ 
         // Child process 
