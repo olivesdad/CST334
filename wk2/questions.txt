@@ -8,7 +8,9 @@ until each finished. Increasing the delay to 5000 had the parent and child proce
 go out of sync sort of randomly. Based on what we learned, I think this is because the processes cant finish in a 
 single time quantum resulting in them getting placed back into ready and then restarted when the CPU decided they should be restarted.
 
-When I redirect stdout to a file they dont alternate. I think because the file can only be accessed by one process at a time
+When I redirect stdout to a file they dont alternate. I think because the file can only be accessed by one process at a time.
+Using a delay of 500 causes parent to add to the file first and using 5000 results in the child adding to the file first
+Makes sense that the increased delay would cause the child process to use the file first
 ~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?~?
 
 
