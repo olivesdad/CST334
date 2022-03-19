@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     if (pid == -1) { 
         fprintf(stderr, "can't fork, error %d\n", errno); 
     }     
-    if (pid){ 
+    if (pid != 0){ 
         // Parent process 
         for (i=0;i<100;i++) { 
             printf("\t \t \t Parent Process %d \n",i); 
