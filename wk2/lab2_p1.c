@@ -17,14 +17,16 @@ int main(int argc, char *argv[]) {
         // Parent process 
         for (i=0;i<100;i++) { 
             printf("\t \t \t Parent Process %d \n",i); 
-            usleep(n); 
+            fflush(stdout);
+	    usleep(n); 
         } 
     } 
     else{ 
         // Child process 
         for (i=0;i<100;i++) { 
             printf("Child process %d\n",i); 
-            usleep(n); 
+            fflush(stdout);
+	    usleep(n); 
         } 
     } 
     return 0; 
