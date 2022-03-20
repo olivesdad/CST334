@@ -1,3 +1,9 @@
+// Name: Andrew Shiraki
+// Date: 2022-03-19
+// Title: Lab3 – task2
+// Description: This program accepts any number of arguments.
+// The first child prints out the number of arguments then writes each char to the fds[1] of the pipe
+// The second child 
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
