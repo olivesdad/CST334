@@ -25,7 +25,8 @@ int main(int argc,char *argv[]){
 		}
 		exit(0);
 	}
-	else if(fork()==0){
+	wait(0);
+	if(fork()==0){
 		printf("\nReader on the downstream end of the pipe \n");
 		close(fds[1]);
 		while((count=read(fds[0],buff,60))>0){
