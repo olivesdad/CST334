@@ -43,12 +43,12 @@ int main ( int argc, char *argv[]){
 			numFaults++;
 		} 		
 	}	
-	
-	for(int i =0 ; i < cacheSize ; i ++){
-		printf("cache entry: %d\n", cache[i]);
-	}
+
+	//print totals 
 	printf("Number of pages read: %d\n", numPages);
 	printf("Number of hits: %d\n", numPages - numFaults);
+
+	//release memory
 	free(cache);
 	return 0;
 }
