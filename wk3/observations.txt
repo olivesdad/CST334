@@ -1,0 +1,12 @@
+I was a confused by the order of operations in example 1 some questions I dug around about were
+1. I understand that we use dup2  to basically send the output of ls to the write to the write side of the pipe instead of 
+stdout and then we use dup2 again to point the stdin fds to the read side of the pipe, but I'm not sure how execlp knows that 
+it should wait until data is recieved through the pipe. Maybe it is built into the "more" program? 
+2. To try to understand how child 1 was waiting for the response from child 2 I messed around with the close(fds[n]) functions
+ and noticed that the processes seemed to hang around if the pipe ends were not closed.
+After a bit of googling, I think I understand that reason is that the more program does not exit until it recieves 
+an "End of File" message from all write ends of the pipe, which includes the child process and the parent process.
+3. Had an issue with step 3 in which having 2 child processes running in parallel caused
+some inconsitency issues. I changed the if, else if, else statement  to allow inserting a 
+wait(0) aftert the firstchild to make sure it was able to finsih it's steps before firing off
+the second child. I'm not sure if this is the right thing to do 
