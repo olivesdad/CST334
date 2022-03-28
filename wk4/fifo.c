@@ -19,7 +19,7 @@ int main ( int argc, char *argv[]){
 
 	//read line ints into buffer
 	temp = 0;
-	while (fgets(buff, 12, stdin) != NULL){
+	while (fgets(buff, 12, stdin ) != NULL){
 	//this is the current page request
 		request = atoi(buff);
 		numPages++;
@@ -46,7 +46,8 @@ int main ( int argc, char *argv[]){
 
 	//print totals 
 	printf("Number of pages read: %d\n", numPages);
-	printf("Number of hits: %d\n", numPages - numFaults);
+	printf("Cache size: %d\n", cacheSize);
+	printf("Number of Faults: %d\n", numFaults);
 
 	//release memory
 	free(cache);
