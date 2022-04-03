@@ -1,3 +1,9 @@
+/*
+ * Name: Andrew Shiraki
+ * Date: 2022-04-03
+ * threadHello creates NTHREADS and prints hello from each thread. 
+ * Uses malloc to allocate space to pass thread number to thread
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -11,14 +17,16 @@ pthread_t threads[NTHREADS];
 int main() {
 	int i;
 	for (i = 0; i < NTHREADS; i++){// create all n threads
-		//Creates thread an puts threadid into threads array,
-		//attribute NULL == default idk what that will be
-		//it runs the process go
-		// arg passed to the thread id is address of i
-		//counter[i] = i;
+
+		//allocate space for new int and assign it value of i
 		int *arg = malloc(sizeof(int));
 		*arg = i;
-		pthread_create(&threads[i], NULL, go, arg);
+		if (pthread_create(&threads[i], NULL, go, arg) !=0){
+			//if we fail to create thread, free allocated memory and abort
+			free(arg);
+			printf("failed to create thread\n");
+			return 1;
+		}
 	}
 	for (i = 0; i < NTHREADS; i++) {//wait for all threads
 		//use pthread_join for each thread in threads array
@@ -33,8 +41,10 @@ int main() {
 
 //routine each thread will run
 void *go(void *arg) {
-//argument passed is address of i in forloop which 
+//print the arg passed in
 printf("Hello from thread %d with iteration %d\n", (int)pthread_self(), *(int *)arg);
+
+//were done with the allocated memory
 free(arg);
 return 0; 
 }

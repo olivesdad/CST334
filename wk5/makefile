@@ -1,5 +1,5 @@
 CC=gcc
-ARGS=-Wall -lpthread -Werror -o
+ARGS=-Wall -pthread -Werror -o
 
 all: threadHello matrix
 threadHello: threadHello.c

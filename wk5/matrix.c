@@ -1,3 +1,9 @@
+/*
+ * Name: Andrew Shiraki
+ * Date: 2022-04-03
+ * matrix.c multiplies 2 matrices (A and B) by creating 1 thread per row in A to perform the mutliplecations
+ * and update matrix C values.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -5,16 +11,15 @@
 
 void *go(void *);
 //Matrix Dimension
-#define N 2
-#define M 3
-#define L 3
+#define N 1024
+#define M 50
+#define L 30
 
+//Global Variables
 pthread_t threads[N];
 int A [N][M];
 int B [M][L];
 int C [N][L];
-
-
 
 int main() {
 
