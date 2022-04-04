@@ -1,0 +1,15 @@
+1) Explain what happens in threadHello.c:
+In the example program threadHello.c, the process begins spawning threads up to NTHREADS.
+the subsequent threads run the "go" routine and are passed the address of an integer in order to
+perform the print statement which says "Hello from thread <threadid> with iteration <n>"
+This process actually ran as expected on my Linux machine, but when running it on the csumb server
+it had an issue that stated every thread was iteration #0.
+This bug was due to the fact that we are passing the new thread a pointer to the iterator variable
+in the for loop that is spawning threads. This value is constantly being updated by the parent thread
+and depending on when the subsequent threads access it, the value may not be as expected.
+
+2) Fix the bug:
+The fix I implimented was to use malloc on each iteration to allocate a new integer and initialize 
+it with the current value of the iterator. I would then pass the address of the newly alocated int
+to the new thread. Also the thread would also need to free the memory after it printed the iteration number.
+

@@ -12,8 +12,8 @@
 void *go(void *);
 //Matrix Dimension
 #define N 1024
-#define M 50
-#define L 30
+#define M 1024
+#define L 1024
 
 //Global Variables
 pthread_t threads[N];
@@ -40,16 +40,13 @@ int main() {
 		//allocate an integer to pass to new thread indicating which row to operate on
 		int *arg = malloc(sizeof(int));
 		*arg = i;
-		printf("made thread \n");
 		pthread_create(&threads[i], NULL, go, arg);
 	}
 
 	for (i = 0; i < N; i++) {//wait for all threads
 		//use pthread_join for each thread in threads array
 		if (pthread_join(threads[i],NULL) != 0) 
-			printf("thread join failed");
-		else 
-		printf("Thread %d returned\n", i);
+			printf("thread join failed"); 
 	}
 	//~~~~~~~~PRINT OUT MATRIX A~~~~~~~~~~//
 	printf("--------MATRIX A---------\n");
@@ -87,8 +84,6 @@ void *go(void *arg) {
 
 //num is the row we will operate on
 int num = *((int*)arg);
-printf("Hello from thread %d with iteration %d\n", (int)pthread_self(), num);
-
 //Loop for operation
 int i,j;
 int sum = 0;
