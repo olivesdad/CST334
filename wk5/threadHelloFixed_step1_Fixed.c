@@ -42,7 +42,7 @@ int main() {
 //routine each thread will run
 void *go(void *arg) {
 //print the arg passed in
-printf("Hello from thread %d with iteration %d\n", (int)pthread_self(), *(int *)arg);
+printf("Hello from thread %lu with iteration %d\n", (unsigned long)pthread_self(), *(int*)arg);
 
 //were done with the allocated memory
 free(arg);

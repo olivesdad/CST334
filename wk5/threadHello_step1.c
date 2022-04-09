@@ -1,3 +1,8 @@
+/*
+ * Name: Andrew Shiraki
+ * Date: 2022-04-04
+ * threadHello_step1: example code given with race condition bug in iterator
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>

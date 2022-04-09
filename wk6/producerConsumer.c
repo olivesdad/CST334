@@ -53,7 +53,7 @@ int main(){
         alphabet[i] = c + i;
     }
     //dummy buffer just incase
-    *buff = 'B';
+    *buff = '0';
     //make producer thread
     pthread_create(&threads[0], NULL, producer, NULL);
     
@@ -63,8 +63,15 @@ int main(){
 
     //wait
     if (pthread_join(threads[0],NULL) != 0) printf("failed to join producer\n");
+    else printf("Producer thread ended\n");
     if (pthread_join(threads[1],NULL) != 0) printf("failed to join consumer");
-    //free buffs
+    else printf("Consumer thread ended\n");
+    //clean up
     free(buff);
+    sem_destroy(&empty);
+    sem_destroy(&full);
+    sem_destroy(&mutex);
+    
+    printf("Main done\n");
     return 0;
 }
