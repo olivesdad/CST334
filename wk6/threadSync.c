@@ -17,6 +17,7 @@ void *go(void *arg)
    sem_wait(&mutex);
    printf("Thread %lu Entered Critical Section..\n", (size_t)arg);
    sleep(1);
+   printf("Thread %lu left Critical Section\n", (size_t)arg);
    sem_post(&mutex);
    return (NULL);
 }
