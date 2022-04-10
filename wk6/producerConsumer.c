@@ -10,6 +10,7 @@ char alphabet[numChars];
 sem_t empty;
 sem_t full;
 sem_t mutex;
+
 char *buff;
 pthread_t threads[2];
 
@@ -46,6 +47,7 @@ int main(){
     sem_init(&empty, 0, 1);
     sem_init(&full, 0, 0);
     sem_init(&mutex, 0, 1);
+
     //populate the alphabet array
     int i;
     char c = 'a';
@@ -71,7 +73,7 @@ int main(){
     sem_destroy(&empty);
     sem_destroy(&full);
     sem_destroy(&mutex);
-    
+
     printf("Main done\n");
     return 0;
 }
