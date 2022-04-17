@@ -11,9 +11,9 @@
 
 void *go(void *);
 //Matrix Dimension
-#define N 1024
-#define M 1024
-#define L 1024
+#define N 10
+#define M 10
+#define L 10
 
 //Global Variables
 pthread_t threads[N];

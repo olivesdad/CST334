@@ -1,0 +1,15 @@
+The initial output of threadSync.c made it seem like multiple threads were entering the critical 
+section at the same time. THe output would say something like:
+
+Thread 0 entered critical section
+Thread 1 entered critical section
+Thread 0 complete
+...
+..
+
+The reason it seemed like both threads were in the critical section at the same time is because
+the next thread enters the critical section as soon as the preceding thread calls sem_post(&mutex)
+but before the preceding thread completes.
+To convince myself that this was the case, I added a print line right after the sem_post line, to
+confirm that the thread did indeed exit before the next thread entered.
+
